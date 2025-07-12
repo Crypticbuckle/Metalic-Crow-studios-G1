@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1752346244
+fog_particle.png::CompressedTexture2D/CompressedTexture2D::8233153857620841537::1752341733::1752341750::1::::<><><>0<>0<>be0471b8a2f8e751ca5038f8296ac5db<>res://.godot/imported/fog_particle.png-c4eda0c86e3615afb0ea47984267ac17.ctex::
+Global.gd::GDScript::648311546759214775::1752344599::0::1::::<>Node<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::1135525978454226719::1752321976::1752322100::1::::<><><>0<>0<>8c82fdb4fa2a2c83a746b5cc6c25da15<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+node_2d.tscn::PackedScene::470063402974003607::1752345647::0::1::::<><><>0<>0<><>::uid://fxj1oghlvb4q::::res://TM.png<>uid://b38g6y148iaks::::res://PlayerStuff/player_climber.tscn<>uid://yrl878rywbv::::res://KillLayer/kill_fog.tscn
+SNACKS.png::CompressedTexture2D/CompressedTexture2D::2592408406698530631::1752321976::1752322100::1::::<><><>0<>0<>a607dba28ca829c83bd49d7c83c4bdc4<>res://.godot/imported/SNACKS.png-746a77a0248ee6e2d7dc378da94bcccc.ctex::
+TM.png::CompressedTexture2D/CompressedTexture2D::399018535039265958::1752321976::1752322100::1::::<><><>0<>0<>ab0b5ca00e9d09c2f5296d2744088f6d<>res://.godot/imported/TM.png-7dd71b6d02540cac703ae5da35e0a78a.ctex::
+::res://KillLayer/::1752345899
+kill_fog.gd::GDScript::7354443893291801100::1752345401::0::1::::Kill_fog<>Node2D<><>0<>0<><>::
+kill_fog.tscn::PackedScene::50598682934769919::1752345899::0::1::::<><><>0<>0<><>::uid://dpkg3um2j2p66::::res://fog_particle.png<>uid://dc1su7t7w4ujc::::res://KillLayer/kill_fog.gd
+::res://PlayerStuff/::1752345647
+arm_element.gd::GDScript/GDScript::7883883843795432821::1752321976::0::1::::arm_element<>Node2D<><>0<>0<><>::
+arm_element.tscn::PackedScene::6580297775451813615::1752345647::0::1::::<><><>0<>0<><>::uid://dklaod2oh7b1n::::res://PlayerStuff/arm_element.gd<>uid://bc61t8nckdw28::::res://SNACKS.png<>uid://qgb7gxomwx7t::::res://icon.svg
+player_climber.gd::GDScript::8088843490020923047::1752344640::0::1::::player_climber<>CharacterBody2D<><>0<>0<><>::
+player_climber.tscn::PackedScene::4420253735096990422::1752345647::0::1::::<><><>0<>0<><>::uid://bc61t8nckdw28::::res://SNACKS.png<>uid://dnikcnqm0e3tb::::res://PlayerStuff/player_climber.gd<>uid://c00sspw25k4sh::::res://PlayerStuff/arm_element.tscn

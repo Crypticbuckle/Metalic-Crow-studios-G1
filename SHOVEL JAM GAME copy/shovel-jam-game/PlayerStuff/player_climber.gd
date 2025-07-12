@@ -11,7 +11,7 @@ var equal_point : Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	pass
+	Global.player = $"."
 
 
 func _physics_process(delta: float) -> void:

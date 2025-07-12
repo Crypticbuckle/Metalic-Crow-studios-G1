@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://gxx41fnr170f"]
+[gd_scene load_steps=6 format=4 uid="uid://gxx41fnr170f"]
 
 [ext_resource type="Texture2D" uid="uid://fxj1oghlvb4q" path="res://TM.png" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://b38g6y148iaks" path="res://PlayerStuff/player_climber.tscn" id="2_0e48y"]
+[ext_resource type="PackedScene" uid="uid://yrl878rywbv" path="res://KillLayer/kill_fog.tscn" id="3_epypp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 texture = ExtResource("1_wtcfe")
@@ -50,3 +51,6 @@ tile_set = SubResource("TileSet_epypp")
 
 [node name="PlayerClimber" parent="." instance=ExtResource("2_0e48y")]
 position = Vector2(0, -64)
+
+[node name="KillFog" parent="." instance=ExtResource("3_epypp")]
+position = Vector2(-642, -256)

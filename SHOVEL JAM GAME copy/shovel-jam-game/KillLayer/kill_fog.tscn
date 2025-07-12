@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://yrl878rywbv"]
+
+[ext_resource type="Texture2D" uid="uid://dpkg3um2j2p66" path="res://fog_particle.png" id="1_b3ph1"]
+[ext_resource type="Script" uid="uid://dc1su7t7w4ujc" path="res://KillLayer/kill_fog.gd" id="1_xdbdg"]
+
+[sub_resource type="Gradient" id="Gradient_b3ph1"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xdbdg"]
+gradient = SubResource("Gradient_b3ph1")
+
+[sub_resource type="Curve" id="Curve_xhm4r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0399812), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ls7sm"]
+curve = SubResource("Curve_xhm4r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o514m"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+gravity = Vector3(0, -200, 0)
+scale_min = 0.0
+scale_max = 13.46
+scale_curve = SubResource("CurveTexture_ls7sm")
+color_ramp = SubResource("GradientTexture1D_xdbdg")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3ph1"]
+normal = Vector2(-0.00746248, -0.999972)
+distance = -63.0
+
+[node name="KillFog" type="Node2D"]
+script = ExtResource("1_xdbdg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(591, 645)
+amount = 500
+texture = ExtResource("1_b3ph1")
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_o514m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(581, 519)
+shape = SubResource("WorldBoundaryShape2D_b3ph1")
+
+[connection signal="body_entered" from="Area2D" to="." method="player_entered_fog"]
