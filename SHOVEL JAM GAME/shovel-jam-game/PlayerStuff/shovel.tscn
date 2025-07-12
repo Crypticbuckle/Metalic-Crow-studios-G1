@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://3bixuhlsp186"]
+
+[ext_resource type="Script" uid="uid://d2pajgjq8n7tr" path="res://PlayerStuff/shovel.gd" id="1_a87tl"]
+[ext_resource type="Texture2D" uid="uid://4ygvurff3f2c" path="res://Assets/shovel_real.png" id="2_a87tl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a87tl"]
+size = Vector2(16, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a87tl"]
+radius = 16.0
+height = 64.0
+
+[node name="Shovel" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_a87tl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a87tl")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_a87tl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a87tl")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 24)
+collision_mask = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

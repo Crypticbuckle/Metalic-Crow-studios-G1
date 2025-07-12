@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://c00sspw25k4sh"]
+
+[ext_resource type="Script" uid="uid://dklaod2oh7b1n" path="res://PlayerStuff/arm_element.gd" id="1_mtef1"]
+[ext_resource type="Texture2D" uid="uid://ciqpxala4785m" path="res://Assets/hands.png" id="2_ueipr"]
+[ext_resource type="Texture2D" uid="uid://qgb7gxomwx7t" path="res://Assets/icon.svg" id="3_ueipr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rcx8"]
+atlas = ExtResource("2_ueipr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpo2g"]
+atlas = ExtResource("2_ueipr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umxd5"]
+atlas = ExtResource("2_ueipr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hajxm"]
+atlas = ExtResource("2_ueipr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fag11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rcx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpo2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umxd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hajxm")
+}],
+"loop": true,
+"name": &"Hands",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtef1"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueipr"]
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rcx8"]
+size = Vector2(16, 2)
+
+[node name="ArmElement" type="Node2D"]
+script = ExtResource("1_mtef1")
+
+[node name="HandArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="HandsSprite" type="AnimatedSprite2D" parent="HandArea"]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_fag11")
+animation = &"Hands"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+shape = SubResource("CircleShape2D_mtef1")
+
+[node name="BottomArea" type="Area2D" parent="HandArea"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 6
+
+[node name="BAShape" type="CollisionShape2D" parent="HandArea/BottomArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ueipr")
+
+[node name="TopArea" type="Area2D" parent="HandArea"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea/TopArea"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_8rcx8")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_ueipr")

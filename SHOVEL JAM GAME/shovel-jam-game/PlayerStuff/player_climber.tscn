@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b38g6y148iaks"]
+
+[ext_resource type="Texture2D" uid="uid://bc61t8nckdw28" path="res://Assets/SNACKS.png" id="1_ganlq"]
+[ext_resource type="Script" uid="uid://dnikcnqm0e3tb" path="res://PlayerStuff/player_climber.gd" id="1_xsoat"]
+[ext_resource type="PackedScene" uid="uid://c00sspw25k4sh" path="res://PlayerStuff/arm_element.tscn" id="3_qt7nd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qt7nd"]
+radius = 16.0
+
+[node name="PlayerClimber" type="CharacterBody2D" node_paths=PackedStringArray("arm_left", "arm_right") groups=["Player"]]
+collision_mask = 2
+script = ExtResource("1_xsoat")
+arm_left = NodePath("ArmElementL")
+arm_right = NodePath("ArmElementR")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ganlq")
+
+[node name="PlayerCol" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qt7nd")
+
+[node name="ArmElementR" parent="." groups=["RIGHTHAND"] instance=ExtResource("3_qt7nd")]
+position = Vector2(24, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="ArmElementL" parent="." groups=["LEFTHAND"] instance=ExtResource("3_qt7nd")]
+position = Vector2(-24, 0)
+is_left = true

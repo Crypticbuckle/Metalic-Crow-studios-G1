@@ -1,0 +1,37 @@
+extends Node2D
+class_name Kill_fog
+
+
+@onready var player : player_climber = get_tree().get_first_node_in_group("Player")
+
+@export var speeds_and_heights : Array[Vector2]
+
+var speed_counter : int = 0
+
+var current_speed : int = 0
+
+
+func _physics_process(delta: float) -> void:
+	
+	
+	if speeds_and_heights.size() > (speed_counter):
+		if player.global_position.y <= speeds_and_heights[speed_counter].y:
+			current_speed = speeds_and_heights[speed_counter].x
+			speed_counter += 1
+	
+	
+	
+	if Input.is_action_just_pressed("Space"):
+		$GPUParticles2D.emitting=true
+	
+	
+	
+	position.y -= current_speed * delta
+	
+	
+#checks if player has crossed damage zone
+
+
+func player_entered_fog(body) -> void:
+	if body == player:
+		player.kill()
