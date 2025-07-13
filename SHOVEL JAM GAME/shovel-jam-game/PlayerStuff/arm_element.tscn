@@ -49,7 +49,7 @@ size = Vector2(16, 14)
 size = Vector2(16, 2)
 
 [node name="ArmElement" type="Node2D"]
-z_index = 2
+z_index = 3
 script = ExtResource("1_mtef1")
 
 [node name="HandArea" type="Area2D" parent="."]

@@ -130,4 +130,4 @@ func clicked_down():
 	
 	var local_mouse_pos = get_local_mouse_position()
 	wanted_hand_pos = local_mouse_pos
-	wanted_hand_pos = wanted_hand_pos.limit_length(75)
+	wanted_hand_pos = wanted_hand_pos.limit_length(70)

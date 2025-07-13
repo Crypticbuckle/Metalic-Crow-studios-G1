@@ -22,11 +22,12 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("Space"):
-		$GPUParticles2D.emitting=true
+		$CPUParticles2D.emitting = true
 	
 	
 	
-	position.y -= current_speed * delta
+	global_position.y -= current_speed * delta
+	global_position.x = player.global_position.x
 	
 	
 #checks if player has crossed damage zone

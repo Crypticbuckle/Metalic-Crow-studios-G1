@@ -59,6 +59,7 @@ func inputs(delta):
 			
 		elif current_slot == 0 or current_slot == 2:
 			change_slot(1)
+			RHand.holding_shovel = false
 			LHand.holding_shovel = true
 	
 	
@@ -71,6 +72,7 @@ func inputs(delta):
 			
 		elif current_slot == 0 or current_slot == 1:
 			change_slot(2)
+			LHand.holding_shovel = false
 			RHand.holding_shovel = true
 	
 	

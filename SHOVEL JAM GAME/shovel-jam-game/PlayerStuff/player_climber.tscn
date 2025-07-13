@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b38g6y148iaks"]
+[gd_scene load_steps=7 format=3 uid="uid://b38g6y148iaks"]
 
 [ext_resource type="Script" uid="uid://dnikcnqm0e3tb" path="res://PlayerStuff/player_climber.gd" id="1_xsoat"]
 [ext_resource type="Texture2D" uid="uid://bjng58yisw5ma" path="res://Assets/mountain_born.png" id="2_qt7nd"]
@@ -8,6 +8,17 @@
 radius = 14.0
 height = 60.0
 
+[sub_resource type="Gradient" id="Gradient_qt7nd"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oq45r"]
+gradient = SubResource("Gradient_qt7nd")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="PlayerClimber" type="CharacterBody2D" node_paths=PackedStringArray("arm_left", "arm_right") groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_xsoat")
@@ -15,6 +26,7 @@ arm_left = NodePath("ArmElementL")
 arm_right = NodePath("ArmElementR")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_qt7nd")
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]
@@ -24,11 +36,25 @@ shape = SubResource("CapsuleShape2D_oq45r")
 [node name="ArmElementR" parent="." groups=["RIGHTHAND"] instance=ExtResource("3_qt7nd")]
 position = Vector2(24, 0)
 
+[node name="ArmElementL" parent="." groups=["LEFTHAND"] instance=ExtResource("3_qt7nd")]
+position = Vector2(-24, 0)
+is_left = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
-[node name="ArmElementL" parent="." groups=["LEFTHAND"] instance=ExtResource("3_qt7nd")]
-position = Vector2(-24, 0)
-is_left = true
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasModulate"]
+texture = SubResource("GradientTexture2D_oq45r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+offset_left = -741.0
+offset_top = -477.0
+offset_right = 741.0
+offset_bottom = 478.0
+color = Color(0.235732, 0.235732, 0.235732, 1)
