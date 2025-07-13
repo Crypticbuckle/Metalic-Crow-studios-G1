@@ -18,13 +18,12 @@ var wanted_hand_pos : Vector2 = Vector2.ZERO
 var is_hooked : bool = false
 var hook_point : Vector2 = Vector2.ZERO
 
+var holding_shovel : bool = false
+
 
 
 func _ready() -> void:
-	if is_left:
-		Hands_Sprite.frame = 2
-	else:
-		Hands_Sprite.frame = 0
+	close_hand()
 
 
 
@@ -52,8 +51,8 @@ func _physics_process(delta: float) -> void:
 	
 	
 	shovel_detection()
-	
-	
+	if holding_shovel:
+		close_hand()
 	
 	
 	
@@ -68,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 		if Input.is_action_just_released("LMB"):
-			Hands_Sprite.frame = 2
+			close_hand()
 		
 		
 	elif !is_left:
@@ -81,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 		if Input.is_action_just_released("RMB"):
-			Hands_Sprite.frame = 0
+			close_hand()
 
 
 
@@ -90,7 +89,8 @@ func shovel_detection():
 	if Input.is_action_just_pressed("F_key"):
 		if hand_area.get_overlapping_bodies():
 			var shovel_thing : shovel_item = hand_area.get_overlapping_bodies()[0]
-			shovel_thing.pick_up(self)
+			if shovel_thing.current_slot == 3:
+				shovel_thing.pick_up(is_left)
 
 
 
@@ -104,13 +104,27 @@ func hook_check():
 
 
 
+func open_hand():
+	if !holding_shovel:
+		if is_left:
+			Hands_Sprite.frame = 3
+		else:
+			Hands_Sprite.frame = 1
+
+
+func close_hand():
+	if is_left:
+		Hands_Sprite.frame = 2
+	else:
+		Hands_Sprite.frame = 0
+
+
+
+
 func clicked_down():
 	#sets the wanted hand position to be in the direction of the mouse, with a limit of whatever
 	
-	if is_left:
-		Hands_Sprite.frame = 3
-	else:
-		Hands_Sprite.frame = 1
+	open_hand()
 	
 	is_hooked = false
 	

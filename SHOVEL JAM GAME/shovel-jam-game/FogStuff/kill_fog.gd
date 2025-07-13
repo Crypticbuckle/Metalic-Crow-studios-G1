@@ -8,7 +8,7 @@ class_name Kill_fog
 
 var speed_counter : int = 0
 
-var current_speed : int = 0
+var current_speed : float = 0
 
 
 func _physics_process(delta: float) -> void:

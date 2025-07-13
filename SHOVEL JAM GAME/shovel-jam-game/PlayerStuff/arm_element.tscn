@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c00sspw25k4sh"]
+[gd_scene load_steps=11 format=3 uid="uid://c00sspw25k4sh"]
 
 [ext_resource type="Script" uid="uid://dklaod2oh7b1n" path="res://PlayerStuff/arm_element.gd" id="1_mtef1"]
 [ext_resource type="Texture2D" uid="uid://ciqpxala4785m" path="res://Assets/hands.png" id="2_ueipr"]
-[ext_resource type="Texture2D" uid="uid://qgb7gxomwx7t" path="res://Assets/icon.svg" id="3_ueipr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rcx8"]
 atlas = ExtResource("2_ueipr")
@@ -50,6 +49,7 @@ size = Vector2(16, 14)
 size = Vector2(16, 2)
 
 [node name="ArmElement" type="Node2D"]
+z_index = 2
 script = ExtResource("1_mtef1")
 
 [node name="HandArea" type="Area2D" parent="."]
@@ -83,7 +83,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea/TopArea"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_8rcx8")
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("3_ueipr")
