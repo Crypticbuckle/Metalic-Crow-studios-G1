@@ -1,20 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://b38g6y148iaks"]
+[gd_scene load_steps=9 format=3 uid="uid://b38g6y148iaks"]
 
 [ext_resource type="Script" uid="uid://dnikcnqm0e3tb" path="res://PlayerStuff/player_climber.gd" id="1_xsoat"]
-[ext_resource type="Texture2D" uid="uid://bjng58yisw5ma" path="res://Assets/mountain_born.png" id="2_qt7nd"]
+[ext_resource type="PackedScene" uid="uid://cijmdlk3u88gn" path="res://PlayerStuff/player_sprite_manager.tscn" id="2_qt7nd"]
 [ext_resource type="PackedScene" uid="uid://c00sspw25k4sh" path="res://PlayerStuff/arm_element.tscn" id="3_qt7nd"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq45r"]
-radius = 14.0
-height = 60.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt7nd"]
+size = Vector2(24, 60)
 
-[sub_resource type="Gradient" id="Gradient_qt7nd"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.392157)
+[sub_resource type="Gradient" id="Gradient_oq45r"]
+colors = PackedColorArray(1, 1, 1, 1, 0.156863, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oq45r"]
+gradient = SubResource("Gradient_oq45r")
+width = 384
+height = 384
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_qt7nd"]
+colors = PackedColorArray(1, 1, 1, 1, 0.0784314, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qt7nd"]
 gradient = SubResource("Gradient_qt7nd")
-width = 512
-height = 512
+width = 1024
+height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -25,13 +35,13 @@ script = ExtResource("1_xsoat")
 arm_left = NodePath("ArmElementL")
 arm_right = NodePath("ArmElementR")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-z_index = 1
-texture = ExtResource("2_qt7nd")
+[node name="PlayerSpriteManager" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_qt7nd")]
+position = Vector2(0, -4)
+parent = NodePath("..")
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_oq45r")
+shape = SubResource("RectangleShape2D_qt7nd")
 
 [node name="ArmElementR" parent="." groups=["RIGHTHAND"] instance=ExtResource("3_qt7nd")]
 position = Vector2(24, 0)
@@ -46,15 +56,27 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.314316, 0.314316, 0.314316, 1)
+color = Color(0.140447, 0.140447, 0.140447, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="CanvasModulate"]
+energy = 0.75
 texture = SubResource("GradientTexture2D_oq45r")
+
+[node name="PointLight2D2" type="PointLight2D" parent="CanvasModulate"]
+energy = 0.25
+texture = SubResource("GradientTexture2D_qt7nd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -3
-offset_left = -741.0
-offset_top = -477.0
-offset_right = 741.0
-offset_bottom = 478.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.235732, 0.235732, 0.235732, 1)

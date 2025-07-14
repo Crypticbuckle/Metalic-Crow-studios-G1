@@ -39,4 +39,41 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("WorldBoundaryShape2D_b3ph1")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PLAYERH" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER HEIGHT :"
+
+[node name="GASH" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "GAS HEIGHT :"
+
+[node name="GASS" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "GAS SPEED :"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(120, 120)
+offset_left = 136.0
+offset_right = 265.0
+offset_bottom = 120.0
+
+[node name="N1" type="Label" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="N2" type="Label" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="N3" type="Label" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
 [connection signal="body_entered" from="Area2D" to="." method="player_entered_fog"]

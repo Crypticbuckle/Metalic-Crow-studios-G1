@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cijmdlk3u88gn"]
+
+[ext_resource type="Script" uid="uid://cdcbcy1wly72f" path="res://PlayerStuff/player_sprite_manager.gd" id="1_pvd5q"]
+[ext_resource type="Texture2D" uid="uid://ywv2qflbr2bb" path="res://Assets/Jump.png" id="1_tdxgi"]
+[ext_resource type="Texture2D" uid="uid://bjng58yisw5ma" path="res://Assets/mountain_born.png" id="2_vlcbs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eota"]
+atlas = ExtResource("2_vlcbs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk15s"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(0, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvd5q"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(344, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlcbs"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(430, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3genh"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(602, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cyc6"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(688, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mil2b"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(1032, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2e4p"]
+atlas = ExtResource("1_tdxgi")
+region = Rect2(1118, 0, 86, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jk15s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eota")
+}],
+"loop": true,
+"name": &"Hooked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk15s")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvd5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlcbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3genh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cyc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mil2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2e4p")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 12.0
+}]
+
+[node name="PlayerSpriteManager" type="Node2D"]
+script = ExtResource("1_pvd5q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jk15s")
+animation = &"Idle"

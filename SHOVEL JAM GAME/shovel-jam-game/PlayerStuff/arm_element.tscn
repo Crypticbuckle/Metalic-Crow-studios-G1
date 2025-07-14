@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c00sspw25k4sh"]
+[gd_scene load_steps=13 format=3 uid="uid://c00sspw25k4sh"]
 
 [ext_resource type="Script" uid="uid://dklaod2oh7b1n" path="res://PlayerStuff/arm_element.gd" id="1_mtef1"]
 [ext_resource type="Texture2D" uid="uid://ciqpxala4785m" path="res://Assets/hands.png" id="2_ueipr"]
@@ -43,10 +43,21 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueipr"]
-size = Vector2(16, 14)
+size = Vector2(12, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rcx8"]
-size = Vector2(16, 2)
+size = Vector2(12, 1)
+
+[sub_resource type="Gradient" id="Gradient_qt7nd"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bgvey"]
+gradient = SubResource("Gradient_qt7nd")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="ArmElement" type="Node2D"]
 z_index = 3
@@ -72,7 +83,6 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="BAShape" type="CollisionShape2D" parent="HandArea/BottomArea"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ueipr")
 
 [node name="TopArea" type="Area2D" parent="HandArea"]
@@ -81,5 +91,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea/TopArea"]
-position = Vector2(0, -7)
+position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_8rcx8")
+
+[node name="PointLight2D" type="PointLight2D" parent="HandArea"]
+energy = 0.2
+texture = SubResource("GradientTexture2D_bgvey")

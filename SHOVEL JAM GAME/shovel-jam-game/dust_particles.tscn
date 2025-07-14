@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dokitq0fo6kcg"]
+
+[sub_resource type="Curve" id="Curve_bpsay"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.0397727, 6.74158), 0.0, -534.467, 0, 0, Vector2(0.102273, -83.1461), 0.0, 0.0, 0, 0, Vector2(0.193182, 33.7079), 0.0, 0.0, 0, 0, Vector2(0.323864, -83.1461), 0.0, 0.0, 0, 0, Vector2(0.755682, -20.2247), -3361.8, -3361.8, 0, 0, Vector2(1, 56.1798), 280.15, 0.0, 0, 0]
+point_count = 6
+
+[node name="Dust_Particles" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 128
+lifetime = 1.2
+preprocess = 2.0
+speed_scale = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(768, 1)
+tangential_accel_max = 38.39
+tangential_accel_curve = SubResource("Curve_bpsay")
+scale_amount_min = 0.0
+scale_amount_max = 3.0

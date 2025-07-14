@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 			speed_counter += 1
 	
 	
+	debug_stuff()
+	
 	
 	if Input.is_action_just_pressed("Space"):
 		$CPUParticles2D.emitting = true
@@ -36,3 +38,9 @@ func _physics_process(delta: float) -> void:
 func player_entered_fog(body) -> void:
 	if body == player:
 		player.kill()
+
+
+func debug_stuff():
+	$CanvasLayer/VBoxContainer2/N1.text = str( snapped(player.global_position.y, 0.01) )
+	$CanvasLayer/VBoxContainer2/N2.text = str( snapped(global_position.y, 0.01) )
+	$CanvasLayer/VBoxContainer2/N3.text = str( current_speed )
