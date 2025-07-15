@@ -36,7 +36,7 @@ arm_left = NodePath("ArmElementL")
 arm_right = NodePath("ArmElementR")
 
 [node name="PlayerSpriteManager" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_qt7nd")]
-position = Vector2(0, -4)
+position = Vector2(0, 2)
 parent = NodePath("..")
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]

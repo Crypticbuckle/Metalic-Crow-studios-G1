@@ -27,12 +27,15 @@ func _physics_process(_delta: float) -> void:
 	elif parent.is_on_floor():
 		z_index = 3
 		jumping = false
-		sprite_anim.play("Idle")
 		
 		if Input.is_action_pressed("Left"):
+			sprite_anim.play("Running")
 			sprite_anim.flip_h = false
 		elif Input.is_action_pressed("Right"):
+			sprite_anim.play("Running")
 			sprite_anim.flip_h = true
+		else:
+			sprite_anim.play("Idle")
 	
 	else:
 		if Input.is_action_pressed("Left"):
