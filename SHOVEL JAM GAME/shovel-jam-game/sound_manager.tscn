@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://drqb53h5ejx87"]
+
+[ext_resource type="AudioStream" uid="uid://dyvj80q2h4jfc" path="res://prayer final.mp3" id="1_g5net"]
+
+[node name="SoundManager" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_g5net")
+volume_db = -10.0
+autoplay = true
