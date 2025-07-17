@@ -7,6 +7,8 @@ var move_speed : int = 180
 @export var arm_left : arm_element
 @export var arm_right : arm_element
 
+@onready var Jump_AudioPlayer : AudioStreamPlayer = %JumpAudio
+
 var equal_point : Vector2 = Vector2.ZERO
 
 
@@ -25,6 +27,9 @@ func _physics_process(delta: float) -> void:
 		if velocity.y >= 150:
 			velocity.y = 150
 	
+	
+	if Input.is_action_just_pressed("ESC"):
+		get_tree().change_scene_to_file("uid://barea3iqtfcyk")
 	
 	
 	if Input.is_action_pressed("Right"):
@@ -46,4 +51,6 @@ func gravity_stuff(delta):
 	
 	if Input.is_action_just_pressed("Space"):
 		if is_on_floor() or (arm_left.is_hooked or arm_right.is_hooked):
+			Jump_AudioPlayer.pitch_scale = randf_range(0.85, 1.15)
+			Jump_AudioPlayer.play()
 			velocity.y = -360

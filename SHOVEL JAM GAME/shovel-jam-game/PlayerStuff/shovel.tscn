@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3bixuhlsp186"]
+[gd_scene load_steps=6 format=3 uid="uid://3bixuhlsp186"]
 
 [ext_resource type="Script" uid="uid://d2pajgjq8n7tr" path="res://PlayerStuff/shovel.gd" id="1_a87tl"]
 [ext_resource type="Texture2D" uid="uid://4ygvurff3f2c" path="res://Assets/shovel_real.png" id="2_a87tl"]
+[ext_resource type="AudioStream" uid="uid://clerx4ws0j3op" path="res://PlayerStuff/Dig.wav" id="3_hhqje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a87tl"]
 size = Vector2(12, 64)
@@ -36,6 +37,10 @@ collision_mask = 2
 [node name="StabTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="DriveSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_hhqje")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StabTimer" to="." method="_on_stab_timer_timeout"]

@@ -7,14 +7,19 @@ class_name Dialogue_Box
 @onready var label : RichTextLabel = $RichTextLabel
 @onready var text_timer : Timer = $Timer
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 @onready var player : player_climber = get_tree().get_first_node_in_group("Player")
 
 
 
-var heights : Array[int] = [0, -500, -10000000000]
+var fading_out : bool = false
+
+
+
+var heights : Array[int] = [-200, -500, -10000000000]
 
 var dialogue : Dictionary = {
-	0 : "poo",
+	-200 : "poo",
 	-500 : "poo again",
 	
 	
@@ -26,13 +31,25 @@ var next_height : int
 
 
 func _ready() -> void:
+	hide()
+	anim_player.play_backwards("FadeIn")
 	next_height = heights.pop_front()
+	
+	await get_tree().create_timer(1.0).timeout
+	show()
 
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if player.global_position.y <= next_height:
 		enqueue_text(dialogue.get(next_height))
+	
+	
+	if fading_out:
+		audio_player.volume_db -= delta*8
+		if audio_player.volume_db <= -14.0:
+			audio_player.stop()
+			fading_out = false
 
 
 
@@ -42,9 +59,13 @@ func enqueue_text(new_text):
 		next_height = heights.pop_front()
 	
 	label.text = new_text
+	audio_player.volume_db = 0.0
+	audio_player.play(randf_range(0.0, 10))
+	audio_player.pitch_scale = randf_range(0.90, 1.25)
 	$Timer.start(1 + float(len(new_text))/5)
 
 
 
 func _on_timer_timeout() -> void:
+	fading_out = true
 	anim_player.play_backwards("FadeIn")

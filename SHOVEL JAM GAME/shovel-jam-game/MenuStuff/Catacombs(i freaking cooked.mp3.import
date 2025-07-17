@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s8vg5hstjy0n"
+path="res://.godot/imported/Catacombs(i freaking cooked.mp3-a56523ea25e9e88eecde2be28609aa49.mp3str"
+
+[deps]
+
+source_file="res://MenuStuff/Catacombs(i freaking cooked.mp3"
+dest_files=["res://.godot/imported/Catacombs(i freaking cooked.mp3-a56523ea25e9e88eecde2be28609aa49.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

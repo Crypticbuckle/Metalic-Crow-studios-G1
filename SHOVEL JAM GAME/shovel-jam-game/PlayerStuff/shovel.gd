@@ -5,6 +5,7 @@ class_name shovel_item
 
 @onready var col_area : Area2D = $Area2D
 @onready var ray_cast : RayCast2D = $RayCast2D
+@onready var Drive_AudioPlayer : AudioStreamPlayer = %DriveSound
 
 @onready var player : player_climber = get_tree().get_first_node_in_group("Player")
 @onready var RHand : arm_element = get_tree().get_first_node_in_group("RIGHTHAND")
@@ -90,6 +91,8 @@ func inputs(delta):
 						RHand.holding_shovel = false
 					
 					current_slot = 3
+					Drive_AudioPlayer.pitch_scale = randf_range(0.75, 1.25)
+					Drive_AudioPlayer.play()
 					set_collision_layer_value(3, true)
 
 

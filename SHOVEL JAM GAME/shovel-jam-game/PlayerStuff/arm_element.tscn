@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c00sspw25k4sh"]
+[gd_scene load_steps=15 format=3 uid="uid://c00sspw25k4sh"]
 
 [ext_resource type="Script" uid="uid://dklaod2oh7b1n" path="res://PlayerStuff/arm_element.gd" id="1_mtef1"]
 [ext_resource type="Texture2D" uid="uid://ciqpxala4785m" path="res://Assets/hands.png" id="2_ueipr"]
+[ext_resource type="AudioStream" uid="uid://ckna64xg2hfid" path="res://PlayerStuff/Grab.mp3" id="3_ueipr"]
+
+[sub_resource type="Curve" id="Curve_bgvey"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.754237, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rcx8"]
 atlas = ExtResource("2_ueipr")
@@ -68,6 +73,23 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 8
 
+[node name="GrabParticles" type="CPUParticles2D" parent="HandArea"]
+emitting = false
+amount = 4
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 245)
+initial_velocity_min = 60.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_bgvey")
+color = Color(0.116741, 0.116741, 0.116741, 1)
+
 [node name="HandsSprite" type="AnimatedSprite2D" parent="HandArea"]
 unique_name_in_owner = true
 position = Vector2(0, -3)
@@ -97,3 +119,8 @@ shape = SubResource("RectangleShape2D_8rcx8")
 [node name="PointLight2D" type="PointLight2D" parent="HandArea"]
 energy = 0.2
 texture = SubResource("GradientTexture2D_bgvey")
+
+[node name="GrabAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_ueipr")
+volume_db = 2.0

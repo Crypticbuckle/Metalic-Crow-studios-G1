@@ -11,6 +11,7 @@ class_name arm_element
 @onready var Bottom_Area : Area2D = %BottomArea
 @onready var Top_Area : Area2D = %TopArea
 @onready var Hands_Sprite : AnimatedSprite2D = %HandsSprite
+@onready var Grab_AudioPlayer : AudioStreamPlayer = %GrabAudio
 
 
 var wanted_hand_pos : Vector2 = Vector2.ZERO
@@ -64,9 +65,6 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_released("LMB"):
 			hook_check()
-		
-		
-		if Input.is_action_just_released("LMB"):
 			close_hand()
 		
 		
@@ -77,9 +75,6 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_released("RMB"):
 			hook_check()
-		
-		
-		if Input.is_action_just_released("RMB"):
 			close_hand()
 
 
@@ -88,6 +83,7 @@ func shovel_detection():
 	#stuff for picking up the shovel
 	if Input.is_action_just_pressed("F_key"):
 		if hand_area.get_overlapping_bodies():
+			clicked_down()
 			var shovel_thing : shovel_item = hand_area.get_overlapping_bodies()[0]
 			if shovel_thing.current_slot == 3:
 				shovel_thing.pick_up(is_left)
@@ -100,6 +96,9 @@ func hook_check():
 		if Bottom_Area.has_overlapping_bodies():
 			hook_point = hand_area.global_position
 			is_hooked = true
+			$HandArea/GrabParticles.emitting = true
+			Grab_AudioPlayer.pitch_scale = randf_range(0.65, 1.35)
+			Grab_AudioPlayer.play()
 
 
 

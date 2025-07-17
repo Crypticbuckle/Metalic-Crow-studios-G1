@@ -664,5 +664,4 @@ script = ExtResource("1_pvd5q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jk15s")
-animation = &"Running"
-frame_progress = 0.665279
+animation = &"Idle"

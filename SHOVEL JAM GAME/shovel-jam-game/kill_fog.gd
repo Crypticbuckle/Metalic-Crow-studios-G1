@@ -13,6 +13,13 @@ var current_speed : float = 0
 var debug_hidden : bool = false
 
 
+
+func _ready() -> void:
+	debug_hidden = true
+	$CanvasLayer.hide()
+
+
+
 func _physics_process(delta: float) -> void:
 	
 	
