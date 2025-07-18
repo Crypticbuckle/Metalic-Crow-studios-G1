@@ -44,14 +44,17 @@ parent = NodePath("..")
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_qt7nd")
 
-[node name="ArmElementR" parent="." groups=["RIGHTHAND"] instance=ExtResource("3_qt7nd")]
+[node name="ArmElementR" parent="." node_paths=PackedStringArray("parent") groups=["RIGHTHAND"] instance=ExtResource("3_qt7nd")]
 position = Vector2(24, 0)
+parent = NodePath("..")
 
-[node name="ArmElementL" parent="." groups=["LEFTHAND"] instance=ExtResource("3_qt7nd")]
+[node name="ArmElementL" parent="." node_paths=PackedStringArray("parent") groups=["LEFTHAND"] instance=ExtResource("3_qt7nd")]
 position = Vector2(-24, 0)
 is_left = true
+parent = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
@@ -87,3 +90,14 @@ color = Color(0.235732, 0.235732, 0.235732, 1)
 unique_name_in_owner = true
 stream = ExtResource("4_oq45r")
 volume_db = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="N4" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"

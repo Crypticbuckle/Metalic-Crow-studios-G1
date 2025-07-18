@@ -5,6 +5,8 @@ class_name arm_element
 
 @export var is_left : bool
 
+@export var parent : player_climber
+
 
 
 @onready var hand_area : Area2D = %HandArea
@@ -51,31 +53,34 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	shovel_detection()
 	if holding_shovel:
 		close_hand()
 	
 	
 	
 	#checks what hand this is, and uses the right input
-	if is_left:
-		if Input.is_action_pressed("LMB"):
-			clicked_down()
+	if parent.can_input:
+		shovel_detection()
+		#shovel grab detection
 		
-		
-		if Input.is_action_just_released("LMB"):
-			hook_check()
-			close_hand()
-		
-		
-	elif !is_left:
-		if Input.is_action_pressed("RMB"):
-			clicked_down()
-		
-		
-		if Input.is_action_just_released("RMB"):
-			hook_check()
-			close_hand()
+		if is_left:
+			if Input.is_action_pressed("LMB"):
+				clicked_down()
+			
+			
+			if Input.is_action_just_released("LMB"):
+				hook_check()
+				close_hand()
+			
+			
+		elif !is_left:
+			if Input.is_action_pressed("RMB"):
+				clicked_down()
+			
+			
+			if Input.is_action_just_released("RMB"):
+				hook_check()
+				close_hand()
 
 
 

@@ -21,6 +21,8 @@ var current_slot : int = 0
 
 var can_stab : bool = true
 
+var first_picked_up : bool = false
+
 
 func _ready() -> void:
 	current_slot = 3
@@ -31,24 +33,27 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	inputs(delta)
 	
-	shovel_placement()
+	shovel_placement(delta)
 
 
-func shovel_placement():
+func shovel_placement(delta):
 	match current_slot:
 		0:
-			global_position = player.global_position
+			global_position = lerp(global_position, player.global_position, delta*30)
 		1:
-			global_position = LHand.hand_area.global_position
+			global_position = lerp(global_position, LHand.hand_area.global_position, delta*30)
 		2:
-			global_position = RHand.hand_area.global_position
-
+			global_position = lerp(global_position, RHand.hand_area.global_position, delta*30)
 
 func inputs(delta):
 	
 	if Input.is_action_pressed("Rotate"):
 		if current_slot == 1 or current_slot == 2:
 			rotate(delta*3)
+		
+		elif global_position.y < player.global_position.y:
+			if first_picked_up:
+				change_slot(0)
 	
 	
 	
@@ -97,6 +102,7 @@ func inputs(delta):
 
 
 func pick_up(is_left_hand):
+	first_picked_up = true
 	can_stab = false
 	$StabTimer.start()
 	set_collision_layer_value(3, false)
