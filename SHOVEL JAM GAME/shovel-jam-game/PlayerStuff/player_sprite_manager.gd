@@ -8,6 +8,8 @@ class_name player_sprite_manager
 
 var jumping : bool = false
 
+var dead : bool = false
+
 
 
 
@@ -53,4 +55,11 @@ func _physics_process(_delta: float) -> void:
 	else:
 		z_index = 3
 		jumping = false
-		sprite_anim.play("Idle")
+		if !dead:
+			sprite_anim.play("Idle")
+
+
+
+func death():
+	dead = true
+	sprite_anim.play("Death")

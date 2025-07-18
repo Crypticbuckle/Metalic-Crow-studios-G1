@@ -30,11 +30,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="PlayerClimber" type="CharacterBody2D" node_paths=PackedStringArray("arm_left", "arm_right") groups=["Player"]]
+[node name="PlayerClimber" type="CharacterBody2D" node_paths=PackedStringArray("arm_left", "arm_right", "sprite_manager") groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_xsoat")
 arm_left = NodePath("ArmElementL")
 arm_right = NodePath("ArmElementR")
+sprite_manager = NodePath("PlayerSpriteManager")
 
 [node name="PlayerSpriteManager" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_qt7nd")]
 position = Vector2(0, 2)

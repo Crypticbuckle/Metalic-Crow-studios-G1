@@ -112,14 +112,15 @@ position = Vector2(311, -1269)
 rotation = 0.760964
 
 [node name="PlayerClimber" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(914, -7567)
+position = Vector2(0, -32)
 
 [node name="Dust_Particles" parent="PlayerClimber" instance=ExtResource("4_q6r6c")]
 position = Vector2(0, -450)
 
 [node name="KillFog" parent="." instance=ExtResource("5_kdubu")]
+z_index = 5
 position = Vector2(0, 256)
-speeds_and_heights = Array[Vector2]([Vector2(5, -1400), Vector2(20, -2500), Vector2(25, -4000), Vector2(0, -7500)])
+speeds_and_heights = Array[Vector2]([Vector2(40, 0), Vector2(5, -1400), Vector2(15, -2500), Vector2(25, -4000), Vector2(0, -7500)])
 
 [node name="DeadMiner" type="Sprite2D" parent="."]
 z_index = -1

@@ -16,13 +16,16 @@ var fading_out : bool = false
 
 
 
-var heights : Array[int] = [-200, -1300, -1700, -2500, -10000000000]
+var heights : Array[int] = [-200, -1300, -1700, -2100, -2500, -4000, -6500, -10000000000]
 
 var dialogue : Dictionary = {
 	heights[0] : "Get started. You have much to climb.",
 	heights[1] : "Many join the dead during their attempt to honor them. None were left to honor these ones.",
 	heights[2] : "The shovel. Using the tools of my parasites in this way? Resourceful. Defiant.",
-	heights[3] : "A terrible miasma chases you. While you were born from me, it is born from them. From their dead.",
+	heights[3] : "The shovel is attuned to the earth. If it is stuck above you, call it back with R",
+	heights[4] : "A terrible miasma chases you. While you were born from me, it is born from them. From their dead.",
+	heights[5] : "This cavern is nothing compared to those above. Stare long enough upwards, and it may faintly emulate the sky",
+	heights[6] : "Observe. They carved their fissures through me. Now you alone remain to make this pilgrimege upwards",
 	
 	
 }
